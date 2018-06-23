@@ -1,0 +1,25 @@
+@import "../admin/admin.scss";
+page-usernotifications {
+    .homeIcon{
+        color : #121212;
+    }
+
+    ion-card.card{
+        border-radius: 15px;
+        opacity: 0.7;
+       // background: linear-gradient(360deg, #4e5efc,#4EE7FC);
+       
+    }
+    
+       .item{
+           background: $SIDE_MENU_TRANSPARENCY;
+       }
+
+       .list{
+        margin-right : 8px;
+        margin-left :8px ; 
+       // background: linear-gradient(360deg, #4e5efc,#4EE7FC); 
+        opacity: 0.7;
+    }
+   
+}

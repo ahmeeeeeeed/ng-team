@@ -1,0 +1,109 @@
+<ion-content class="backgroundd">
+  <div *ngIf="!registred">
+  <!--  <img class="logo" src="../assets/imgs/logo2.png" />-->
+    <img class="logo" src="https://firebasestorage.googleapis.com/v0/b/project-bb4c8.appspot.com/o/logo2.png?alt=media&token=c4b89ed4-d91a-49d3-834a-3939fe1e1f6c" />
+    <ion-card>
+      <ion-card-content>
+        <ion-list no-lines>
+
+          <ion-item>
+            <ion-label floating>username</ion-label>
+            <ion-input type="email" [(ngModel)]="login_username"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>password</ion-label>
+            <ion-input type="password" [(ngModel)]="login_password"></ion-input>
+          </ion-item>
+          <ion-item>
+            <br>
+          </ion-item>
+
+          <button ion-button clear (click)="resetPassword()">
+          Mot de passe oublié ?</button>
+          <br>
+          <button ion-button block round (click)="login(login_username,login_password)" 
+          [disabled]="!(login_username && login_password)">
+            Se connecter</button>
+          <br>
+
+          <button ion-button block outline round (click)="gotoRegistreinterface()">
+            S'inscrire</button>
+
+        </ion-list>
+     <!--   <ion-row>
+          <ion-col>
+            <button ion-button block round (click)="gotoAdmininterface()">
+              admin interface</button>
+            <br>
+
+          </ion-col>
+          <ion-col>
+            <button ion-button block round (click)="gotoUserinterface()">
+              user interface</button>
+          </ion-col>
+        </ion-row>
+      -->
+      
+      
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
+
+  <div *ngIf="registred">
+    <ion-avatar item-start class="roundImage">
+     <!-- <img src="http://www.stpaulusbc.org/content/images/no-profile.png" />-->
+     <img [src]="profilePicture" />
+
+     <!-- <img src="../assets/imgs/anonyme.png" />-->
+
+    </ion-avatar>
+    <button ion-button block round clear (click)="addPicture()"
+      [disabled]="!(reg_email)">
+      <h6>Ajouter une photo de profil</h6>
+    </button>
+    <ion-card>
+
+      <ion-card-content>
+        <ion-list no-lines>
+
+          <ion-item>
+            <ion-label floating>Pseudo</ion-label>
+            <ion-input type="text" [(ngModel)]="reg_pseudo"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="email" [(ngModel)]="reg_email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Mot de passe</ion-label>
+            <ion-input type="password" [(ngModel)]="reg_pass"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Poste</ion-label>
+            <ion-input type="text" [(ngModel)]="reg_poste"></ion-input>
+          </ion-item>
+          <br>
+          <ion-item>
+            <ion-label><div style="opacity : 0.7">Rôle</div></ion-label>
+            <ion-select [(ngModel)]="reg_role" (ionChange)="onChange(reg_role)">
+              <ion-option value="admin">Administrateur</ion-option>
+              <ion-option value="user">Utilisateur</ion-option>
+            </ion-select>
+          </ion-item>
+
+
+          <button ion-button block round (click)="registre(reg_pseudo,reg_email,reg_pass,reg_poste)" [disabled]="!(reg_pseudo && reg_email && reg_pass && reg_poste && selectedValue)">
+            Enregistrer</button>
+          <button ion-button block outline round (click)="cancel()">
+            cancel</button>
+
+        </ion-list>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,102 @@
+<!--
+  Generated template for the AdminProfilPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+      <ion-row>
+          <ion-col>
+    <button ion-button menuToggle [class.activeButtonHighlight]="true" >
+      <ion-icon name="menu" style="margin-top : 10px"></ion-icon>
+    </button>
+    </ion-col>
+    
+     <ion-col>
+    <ion-title class="title">Equipe</ion-title>
+  </ion-col>
+  <ion-col>
+    <ion-buttons right>
+  
+      <button ion-button clear class="homeButton" name="home" (click)="gotoAdminPage()">
+  
+        <ion-icon class="homeIcon" isActive="false" [class.activeButtonHighlight]="!activeButton" name="home"></ion-icon>
+  
+      </button>
+      <button ion-button clear class="homeButton" name="home" (click)="goToChatList()">
+  
+        <ion-icon isActive="true" [class.activeButtonHighlight]="true" name="ios-chatbubbles-outline"></ion-icon>
+  
+      </button>
+    </ion-buttons>
+  </ion-col>
+</ion-row>
+    <ion-row>
+      <ion-col>
+    <!--<ion-searchbar class="stick"  (ionInput)="getItems($event)"> </ion-searchbar>-->
+  </ion-col>
+  </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="background-image" padding>
+
+ 
+
+    <style>
+        .sticky {
+         
+          position: sticky;
+         
+        }
+        </style>
+  
+
+<ion-card *ngFor="let item of admins | async">
+  
+  <ion-card-content>
+    <ion-card-title>
+      {{item.pseudo}}
+      </ion-card-title>
+
+<ion-list>
+    <ion-item-sliding>
+      <ion-item class="ionitem" >
+        <ion-avatar item-start>
+        
+          <img src= "{{item.imageURL}}"/> 
+                <!-- <img scr="../assets/imgs/logo.png" />-->
+        </ion-avatar>
+           <h2>Email : {{item.email}}</h2>
+           <p>Poste : {{item.poste}}</p>
+        
+          
+      </ion-item>
+          
+    <!--  <ion-item-options side="left" class="ionitem" >
+        
+        <button ion-button color="secondary">
+          <ion-icon name="ios-notifications-outline"></ion-icon>
+          Notifier
+        </button>
+      </ion-item-options>
+      <ion-item-options side="right" class="ionitem">
+        <button ion-button color="danger">
+          <ion-icon name="ios-trash-outline"></ion-icon>
+          Supprimer
+        </button>
+      </ion-item-options>
+    -->
+    </ion-item-sliding>
+    
+  </ion-list>
+</ion-card-content>
+</ion-card>
+<!--<ion-list>
+  <ion-item *ngFor="let item of items">
+    {{item}}
+  </ion-item>
+</ion-list>
+-->
+</ion-content>

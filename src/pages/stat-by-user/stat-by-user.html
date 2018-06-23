@@ -1,0 +1,35 @@
+
+
+<ion-content >
+
+<div *ngIf="showStat">
+    
+
+  <h3 padding  >
+    Les statistiques des tâches qui sont réalisées par 
+    <b style="color : rgb(107, 105, 105)">{{pseudo}}</b> :
+  </h3>
+  <!-- bar chart -->
+  <div> 
+      <div style="display: block" >
+        <canvas  baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+      
+    </div>
+
+  <ion-list no-lines>
+    <ion-item *ngFor="let tache of tab_liste_titre">
+      <h5>{{tache}}</h5>
+    </ion-item>
+  </ion-list>
+  
+</div>
+    
+</ion-content>

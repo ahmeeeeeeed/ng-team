@@ -1,0 +1,57 @@
+@import "../admin/admin.scss";
+
+page-admin-taches{
+    .homeIcon{
+        color : #121212;
+    }
+    ion-card.card{
+        border-radius: 15px;
+        opacity: 0.7;
+       // background: linear-gradient(360deg, #4e5efc,#4EE7FC);
+       
+    }
+    
+       .item{
+           background: $SIDE_MENU_TRANSPARENCY;
+       }
+    .stick{
+        opacity: 0.7    ;
+    }
+
+
+
+    .SwipedTabs-indicatorSegment
+    {
+        -webkit-transition: 0.3s all;
+        -moz-transition:  0.3s all;
+        -o-transition:  0.3s all;
+        transition:  0.3s all;
+        transform-origin: top 0 left 0;
+        height: 1px;
+	    position: relative;
+	    top: -2px;
+        //background-color: black !important;
+        background-color: #05798d !important;
+    }
+    .SwipedTabs-tabs ion-segment-button
+    {
+    	border:none !important;
+        //color:gray!important;
+        color : #23a4bb !important;
+    //	background-color:white!important;
+    
+    }
+     .SwipedTabs-tabs ion-segment-button.SwipedTabs-activeTab
+    {
+       // color:black !important;
+       color : #05798d !important;
+    }
+    .SwipedTabs-tabs
+    {
+    	border-bottom: solid 1px #e6e6e6  !important;
+    }
+    
+
+
+
+}

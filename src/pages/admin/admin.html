@@ -1,0 +1,85 @@
+
+
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle [class.activeButtonHighlight]="!activeButton" >
+      <ion-icon name="menu" ></ion-icon>
+    </button>
+    <ion-buttons right>
+
+      <button ion-button clear class="homeButton"  name="home"(click)="gotoAdminPage()">
+      
+            <ion-icon class="homeIcon" isActive="false"  [class.activeButtonHighlight]="!activeButton" name="home"></ion-icon>
+        
+        </button>
+        <button ion-button clear class="homeButton"  name="home" (click)="goToChatList()">
+      
+            <ion-icon class="homeIcon" isActive="false"  [class.activeButtonHighlight]="!activeButton" name="ios-chatbubbles-outline"></ion-icon>
+      
+        </button>
+    </ion-buttons>
+    <ion-title class="title" style="margin-top : 0px">Accueil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="background-image">
+
+  <h3>Bienvenu chez
+    <b>Ng-Team</b> voici les tâches qui sont en cours :</h3>
+  <ion-card *ngFor="let tache of TACHES_ENCOURS | async ">
+    <ion-card-content>
+      <ion-card-title>
+        {{tache.titre}}
+  
+      </ion-card-title>
+  
+      <p>
+        {{tache.description}}
+      </p>
+  
+      <ion-item>
+        <b>Créée par </b> {{tache.createur}}
+        <br>
+        <b>le </b> {{tache.date_creation | date:'short'}}
+      </ion-item>
+      <ion-item>
+        <b>Date de debut :</b> {{tache.date_debut | date:'short'}}
+        <br>
+        <b>par </b> {{tache.proprietaire}}
+      </ion-item>
+  
+      <ion-item>
+        <b>Pèriode estimée :</b> {{tache.temps_estime}} Heurs
+      </ion-item>
+      <ion-item>
+        <b>Date limite :</b> {{tache.date_limite_estime | date:'short'}}
+      </ion-item>
+  
+  
+    </ion-card-content>
+  <!--
+    <ion-row>
+  
+      <ion-col>
+        <button ion-button clear icon-left color="danger" (click)="stopTask(tache.id,tache.titre)">
+          <ion-icon name="ios-hand-outline" style="margin-right: 10px;"></ion-icon>
+          <div>Suspendre</div>
+        </button>
+      </ion-col>
+  
+      <ion-col>
+        <button ion-button clear icon-left color="secondary" (click)="endTask(tache.id,tache.titre,tache.description,tache.date_creation,tache.temps_estime,tache.user)">
+          <ion-icon name="md-checkmark" style="margin-right: 10px;"></ion-icon>
+          <div>Terminer</div>
+        </button>
+      </ion-col>
+  
+  
+  
+    </ion-row>
+  -->
+  </ion-card>
+  
+  <!--<button ion-button (click)="goBack()">Disconnect</button>-->
+</ion-content>

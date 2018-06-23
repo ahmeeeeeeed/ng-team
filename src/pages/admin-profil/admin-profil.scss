@@ -1,0 +1,45 @@
+@import "../admin/admin.scss";
+
+page-admin-profil{
+.homeIcon{
+    color : #121212;
+}
+h4{
+    text-align: center;
+    color:#0821ff;
+  
+}
+.roundImage{
+    height: 160px; 
+    width: 160px; 
+   border: 8px solid $SIDE_MENU_TRANSPARENCY;
+   border-radius: 50%;
+   box-shadow: 0 0 5px gray;
+   display: inline-block;
+   margin-left: auto;
+   margin-right : auto;
+   display: block;
+   margin-bottom: 10px;
+
+    img  {
+        width:146px;
+        height:146px;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+       // margin : 20px;
+     //  margin-left: auto;
+     //  margin-right: auto;
+
+      }
+
+}
+ion-card.card{
+    border-radius: 15px;
+    opacity: 0.85;
+    background: linear-gradient(360deg, #4e5efc,#4EE7FC);
+}
+
+   .item{
+       background: $SIDE_MENU_TRANSPARENCY;
+   }
+}

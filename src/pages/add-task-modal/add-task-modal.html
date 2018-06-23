@@ -1,0 +1,69 @@
+<!--
+  Generated template for the AddUserModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<div class="overlay" (click)="onClose()"></div>
+<div class="modal_content">
+<ion-header>
+
+  <ion-navbar>
+    
+    <button ion-button class="homeButton" clear (click)="onClose()">
+      <ion-icon name="md-close"></ion-icon>
+    </button>
+    <ion-title  class="title">Ajouter des Tâches</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content  class="main-view">
+
+
+
+ 
+  <ion-card>
+    <ion-card-header>
+    
+    </ion-card-header>
+    <ion-card-content>
+      
+        <ion-item>
+          <ion-label floating>titre</ion-label>
+          <ion-input type="text" [(ngModel)]="titre"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label floating> Déscriptions</ion-label>
+          <ion-input  type="text" [(ngModel)]="description"></ion-input>
+        </ion-item>
+        <br>
+
+       <!-- <ion-item>
+          <ion-label>Notify me at: </ion-label>
+          <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="estim_time" (ionChange)="estimTime($event)"></ion-datetime>
+        </ion-item>
+       -->
+       <ion-item>
+        <ion-label floating> Période estimée par HEUR</ion-label>
+        <ion-input  type="number" [(ngModel)]="estim_time"></ion-input>
+      </ion-item>
+      <br>
+ 
+
+          <button ion-button icon-left block 
+          [disabled]="!(titre && description && estim_time && estim_time>0)"
+          (click)="createTask(titre,description,estim_time)">
+        <ion-icon name="md-create"></ion-icon>
+        <div>Ajouter</div>
+      </button>
+
+
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>
+</div>

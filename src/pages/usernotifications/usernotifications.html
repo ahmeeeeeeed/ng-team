@@ -1,0 +1,157 @@
+<!--
+  Generated template for the UsernotificationsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-row>
+          
+          <ion-col>
+            <button ion-button menuToggle [class.activeButtonHighlight]="true" >
+              <ion-icon name="menu" style="margin-top : 10px"></ion-icon>
+            </button>
+          </ion-col>
+            
+          <ion-col>
+            <ion-title class="title">Notifications</ion-title>
+          </ion-col>
+
+          <ion-col>
+              <ion-buttons right>
+  
+                  <button ion-button clear class="homeButton" name="home" (click)="gotoAdminPage()">
+              
+                    <ion-icon class="homeIcon" isActive="false" [class.activeButtonHighlight]="!activeButton" name="home"></ion-icon>
+              
+                  </button>
+                  <button ion-button clear class="homeButton" name="home" (click)="goToChatList()">
+              
+                    <ion-icon isActive="true" [class.activeButtonHighlight]="true" name="ios-chatbubbles-outline"></ion-icon>
+              
+                  </button>
+                </ion-buttons>
+          </ion-col>
+
+        </ion-row>
+          
+    </ion-navbar>
+  </ion-header>
+
+<ion-content class="background-image">
+  <!--<h2 padding #message> Aucune notification pour le moment</h2>-->
+
+    <ion-card *ngFor="let notifications of NOTIFICATIONS | async " (click)="notificationInfo(notifications.id,notifications.content)">
+    
+      <ion-card-content *ngIf="notifications.receiver_id==userId">
+          <ion-item>
+              <ion-avatar item-start>
+                <img src="https://firebasestorage.googleapis.com/v0/b/project-bb4c8.appspot.com/o/GN.png?alt=media&token=7b9ac392-fc53-45a9-813b-c718ddc640e3">
+              </ion-avatar>
+              <h1><b>Ng-Team notification</b></h1>
+              
+            </ion-item>
+    
+        <ion-item>
+          {{notifications.content}}
+        </ion-item>
+        <ion-item>
+          <b>Envoyée le </b> {{notifications.date | date:'short'}}
+        </ion-item>
+    
+      </ion-card-content>
+    
+    
+    </ion-card>
+<!--
+  <ion-item-group no-lines>
+    <ion-item-divider color="light" style="text-align : center">{{date | date:'short'}}</ion-item-divider> 
+    <ion-item>
+
+        <ion-card>
+            <ion-card-content>
+              <ion-card-title>
+                notification
+          
+              </ion-card-title>
+          
+              <p>
+                  notification
+              </p>
+          
+              <ion-item>
+                <b>Créée le </b> {{date | date:'short'}}
+                <br>
+                <b>le </b> {{date | date:'short'}}
+              </ion-item>
+              <ion-item>
+                <b>Créée le </b> {{date | date:'short'}}
+                <br>
+                <b>le </b> {{date | date:'short'}}
+              </ion-item>
+              
+              <ion-item>
+                <b>Créée le </b> {{date | date:'short'}}
+                <br>
+                <b>le </b> {{date | date:'short'}}
+              </ion-item>
+              <ion-item>
+                <b>Créée le </b> {{date | date:'short'}}
+                <br>
+                <b>le </b> {{date | date:'short'}}
+              </ion-item>
+          
+          
+            </ion-card-content>
+        
+          </ion-card>
+
+
+    </ion-item>
+    <ion-item>
+
+        <ion-card>
+            <ion-card-content>
+              <ion-card-title>
+                notification
+          
+              </ion-card-title>
+          
+              <p>
+                  notification
+              </p>
+          
+              <ion-item>
+                <b>Créée le </b> {{date | date:'short'}}
+                <br>
+                <b>le </b> {{date | date:'short'}}
+              </ion-item>
+              <ion-item>
+                <b>Créée le </b> {{date | date:'short'}}
+                <br>
+                <b>le </b> {{date | date:'short'}}
+              </ion-item>
+              
+              <ion-item>
+                <b>Créée le </b> {{date | date:'short'}}
+                <br>
+                <b>le </b> {{date | date:'short'}}
+              </ion-item>
+              <ion-item>
+                <b>Créée le </b> {{date | date:'short'}}
+                <br>
+                <b>le </b> {{date | date:'short'}}
+              </ion-item>
+          
+          
+            </ion-card-content>
+        
+          </ion-card>
+
+    </ion-item>
+
+
+  </ion-item-group>
+-->
+</ion-content>

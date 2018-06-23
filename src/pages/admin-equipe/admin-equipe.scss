@@ -1,0 +1,48 @@
+@import "../admin/admin.scss";
+$SIDE_MENU_TRANSPARENCY : rgba(255,255,255,0.5);
+$SIDE_MENU_AND_HEADER_COLOR :  #2ac1db;
+page-admin-equipe{
+
+/*.background{
+
+background: linear-gradient(360deg, #4e5efc,#4EE7FC);
+
+}*/
+
+.homeIcon{
+  color : #121212;
+}
+ion-card.card{
+  border-radius: 15px;
+  //opacity: 0.8;
+  background: linear-gradient(360deg, rgb(65, 195, 212));
+  background: linear-gradient(360deg, #4e5efc,rgba(78, 232, 252, 0));
+
+  
+/*  
+  box-shadow: none;
+  background: rgba(232, 230, 230, 0.7px);
+ */
+}
+.ionitem{
+  // background: linear-gradient(360deg, #4e5efc,#4EE7FC);
+     background-color : #78cbfc;
+     //background-color : #a0dcff;
+     
+    // background: rgba(232, 230, 230, 0.7px);
+
+   
+    height: 80px;
+    border: medium none;
+
+}
+
+h2{
+   //font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   font-size: 3em;
+   font-weight: lighter;
+   
+ }
+
+ 
+}

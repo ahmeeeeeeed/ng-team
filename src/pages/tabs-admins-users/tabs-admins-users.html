@@ -1,0 +1,142 @@
+
+<ion-tabs selectedIndex="0" tabsPlacement="bottom"  >
+  <ion-tab [root]="tab1Root" [tabBadge]=nbAdmins tabBadgeStyle="danger" tabTitle="Administrateurs" tabIcon="home"></ion-tab>
+  <ion-tab [root]="tab2Root"  [tabBadge]=nbUsers tabBadgeStyle="danger" tabTitle="Utilisateurs" tabIcon="md-contacts"></ion-tab>
+</ion-tabs>
+
+
+<!--
+<super-tabs selectedIndex="0" tabsPlacement="bottom" badgeColor="danger" (tabSelect)="onTabSelected($event)" indicatorColor="primary" toolbarColor="primary" >
+  <super-tab [root]="tab1Root"   title="Administrateurs" icon="home" id="badgeAdmin"></super-tab>
+  <super-tab [root]="tab2Root"   title="Utilisateurs" icon="md-contacts" id="badgeUser"></super-tab>
+</super-tabs>
+-->
+
+
+<!--
+  Generated template for the AdminProfilPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle [class.activeButtonHighlight]="true" >
+      <ion-icon name="menu" ></ion-icon>
+    </button>
+   <button ion-button clear class="homeButton"  name="home"(click)="gotoAdminPage()" >
+   
+         <ion-icon class="homeIcon" name="home"></ion-icon>
+    
+     </button>
+    <ion-title class="title">Equipe</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="backgroundd"  padding>
+  
+  <ion-slides slidesPerView="1" >
+    <ion-slide class ="card">
+    
+   <ion-scroll  scrollY="true" style="width :  350px; height : 600px">
+     
+<ion-card   *ngFor="let item of admins | async" >
+  
+  
+    
+    
+
+  <ion-card-content>
+    <ion-card-title>
+      {{item.pseudo}}
+      </ion-card-title>
+
+<ion-list>
+    <ion-item-sliding>
+      <ion-item class="ionitem" >
+        <ion-avatar item-start>
+        
+          <img src="http://www.stpaulusbc.org/content/images/no-profile.png"/>
+        -->           <!-- <img scr="../assets/imgs/logo.png" />-->
+    <!--    </ion-avatar>
+           <h2>Email : {{item.email}}</h2>
+           <p>Poste : {{item.poste}}</p>
+        
+          
+      </ion-item>
+          
+      <ion-item-options side="left" class="ionitem" >
+        <button ion-button color="primary">
+          <ion-icon name="text"></ion-icon>
+          Text
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon name="call"></ion-icon>
+          Call
+        </button>
+      </ion-item-options>
+      <ion-item-options side="right" class="ionitem">
+        <button ion-button color="primary">
+          <ion-icon name="mail"></ion-icon>
+          Email
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+    
+  </ion-list>
+</ion-card-content>
+</ion-card>
+</ion-scroll> 
+
+</ion-slide>
+
+  <ion-slide >
+      <ion-scroll  scrollY="true" style="width :  350px; height : 600px">
+    <ion-card *ngFor="let item of users | async">
+  
+      <ion-card-content>
+        <ion-card-title>
+          {{item.pseudo}}
+          </ion-card-title>
+    
+    <ion-list>
+        <ion-item-sliding>
+          <ion-item class="ionitem" >
+            <ion-avatar item-start>
+            
+              <img src="http://www.stpaulusbc.org/content/images/no-profile.png"/>
+                    <!-- <img scr="../assets/imgs/logo.png" />-->
+    <!--        </ion-avatar>
+               <h2>Email : {{item.email}}</h2>
+               <p>Poste : {{item.poste}}</p>
+            
+              
+          </ion-item>
+              
+          <ion-item-options side="left" class="ionitem" >
+            <button ion-button color="primary">
+              <ion-icon name="text"></ion-icon>
+              Text
+            </button>
+            <button ion-button color="secondary">
+              <ion-icon name="call"></ion-icon>
+              Call
+            </button>
+          </ion-item-options>
+          <ion-item-options side="right" class="ionitem">
+            <button ion-button color="primary">
+              <ion-icon name="mail"></ion-icon>
+              Email
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+        
+      </ion-list>
+    </ion-card-content>
+    </ion-card>
+  </ion-scroll> 
+  </ion-slide>
+</ion-slides>
+
+</ion-content>-->

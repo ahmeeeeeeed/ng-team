@@ -1,0 +1,39 @@
+
+
+<ion-content padding class="background-imagee">
+ <!-- doughnut chart -->
+
+ <h3>
+    La progression instantanée du travail :
+</h3>
+ <div style="display: block">
+    <canvas baseChart
+                [data]="doughnutChartData"
+                [labels]="doughnutChartLabels"
+                [chartType]="doughnutChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+  </div>
+
+<!--
+  <ion-card>
+      <ion-card-content>
+        <ion-card-title>
+            <h3>
+                La progression instantanée du travail :
+            </h3>
+          
+
+        </ion-card-title>
+        <div style="display: block">
+            <canvas baseChart
+                        [data]="doughnutChartData"
+                        [labels]="doughnutChartLabels"
+                        [chartType]="doughnutChartType"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+          </div>
+      </ion-card-content>
+    </ion-card>
+-->
+</ion-content>

@@ -1,0 +1,86 @@
+<!--
+  Generated template for the AddUserModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<div class="overlay" (click)="onClose()"></div>
+<div class="modal_content">
+<ion-header>
+
+  <ion-navbar>
+    
+    <button ion-button class="homeButton" clear (click)="onClose()">
+      <ion-icon name="md-close"></ion-icon>
+    </button>
+    <ion-title  class="title">Ajouter utilisateurs</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="main-view">
+    
+    
+  <ion-avatar item-start class="roundImage">
+    <!-- <img src="http://www.stpaulusbc.org/content/images/no-profile.png" />-->
+    <img [src]="photo" />
+
+    <!-- <img src="../assets/imgs/anonyme.png" />-->
+
+   </ion-avatar>
+   <button ion-button block round clear (click)="addPicture()">
+     <h6>Ajouter une photo de profil</h6>
+   </button>
+  <ion-card>
+    <ion-card-header>
+    
+    </ion-card-header>
+    <ion-card-content>
+      
+        <ion-item>
+          <ion-label floating>Pseudo :</ion-label>
+          <ion-input type="text" [(ngModel)]="pseudo"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label floating>Email :</ion-label>
+          <ion-input type="email" [(ngModel)]="email"></ion-input>
+        </ion-item>
+        <br>
+        
+        <ion-item>
+          <ion-label floating>Poste :</ion-label>
+          <ion-input type="text" [(ngModel)]="poste"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label floating>Mot de passe :</ion-label>
+          <ion-input type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label floating>Confirmer mot de passe :</ion-label>
+          <ion-input type="password" [(ngModel)]="passwordCofrimation"></ion-input>
+        </ion-item>
+        <br>
+        
+      
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left block (click)="addUser(pseudo,email,poste,password)"
+          [disabled]="!(pseudo && email && poste && password && passwordCofrimation==password)">
+        <ion-icon name="md-create"></ion-icon>
+        <div>Ajouter</div>
+      </button>
+        </ion-col>
+      
+      </ion-row>
+
+    </ion-card-content>
+  </ion-card>
+
+      
+   
+</ion-content>
+</div>

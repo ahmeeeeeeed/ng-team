@@ -1,0 +1,321 @@
+<!--
+  Generated template for the UsertachesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header no-border>
+    <ion-navbar style="display : relative">
+        
+            <button ion-button menuToggle [class.activeButtonHighlight]="true" >
+              <ion-icon name="menu" style="margin-top : 10px"></ion-icon>
+            </button>
+           
+      
+            <ion-title class="title">Tâches</ion-title>
+
+
+            <ion-buttons right>
+
+                <button ion-button clear class="homeButton"  name="home"(click)="gotoAdminPage()">
+                
+                      <ion-icon class="homeIcon" isActive="false"  [class.activeButtonHighlight]="!activeButton" name="home"></ion-icon>
+                  
+                  </button>
+                  <button ion-button clear class="homeButton"  name="home" (click)="goToChatList()">
+                
+                      <ion-icon class="homeIcon" isActive="false"  [class.activeButtonHighlight]="true" name="ios-chatbubbles-outline"></ion-icon>
+                
+                  </button>
+              </ion-buttons>
+     
+              
+
+          
+    </ion-navbar>
+    <ion-toolbar >
+        <ion-segment  class="SwipedTabs-tabs"  >
+            <ion-segment-button *ngFor='let tab of tabs ; let i = index ' value="IngoreMe" (click)="selectTab(i)"
+            [ngClass]='{ "SwipedTabs-activeTab" : ( this.SwipedTabsSlider  && ( this.SwipedTabsSlider.getActiveIndex() === i || (  tabs.length -1 === i&& this.SwipedTabsSlider.isEnd()))) }' >
+              {{tab}}
+            </ion-segment-button>
+        </ion-segment>
+        <!-- here is our dynamic line  "indicator"-->
+      <div id='indicator' class="SwipedTabs-indicatorSegment" [ngStyle]="{'width.%': (100/this.tabs.length)}"></div>
+  
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content  class="background-image">
+    <!--
+      <ion-item>
+        <ion-range min="1000" max="2000" step="100" snaps="true" color="secondary" [(ngModel)]="singleValue4"></ion-range>
+      </ion-item>
+    -->
+    
+
+   <!-- <ion-scroll scrollY="true" style="width :  100%; height : 100%">-->
+
+    
+  
+ <!--<ion-scroll scrollX="true"  style="width :  100%; height : 100%">-->
+ <!--<ion-scroll scrollY="true"  style="width :  350px; height : 600px">-->
+    
+      
+      <ion-slides #SwipedTabsSlider (ionSlideDrag)="animateIndicator($event)" (ionSlideWillChange)="updateIndicatorPosition()"
+        (ionSlideDidChange)="updateIndicatorPosition()" (pan)="updateIndicatorPosition()" [pager]="false">
+      
+        <ion-slide>
+          <!-- <ion-slide style="overflow: auto;"> -->
+      
+          <ion-fab right bottom>
+            <button ion-fab color="secondary" (click)="addTask()">
+              <ion-icon name="add"></ion-icon>
+            </button>
+          </ion-fab>
+      
+      
+          <ion-scroll scrollY="true" style=" height : 500px">
+         <!--   <ion-searchbar class="stick" (ionInput)="getItems($event)"> </ion-searchbar>-->
+      
+            <ion-card *ngFor="let tache of TACHES_AFAIRE | async ">
+              <ion-card-content >
+                <ion-card-title>
+                  {{tache.titre}}
+                  
+      
+                </ion-card-title>
+      
+                <p>
+                  {{tache.description}}
+                </p>
+      
+      
+                <ion-item>
+                  <b>Date de création :</b> {{tache.date_creation | date:'short'}}
+                </ion-item>
+                <ion-item>
+                  <b>Par :</b> {{tache.user}}
+                </ion-item>
+                <ion-item>
+                  <b>Temps estimé :</b> {{tache.temps_estime}} <b>Heurs</b>
+                </ion-item>
+      
+              </ion-card-content>
+      
+              <ion-row>
+                <ion-col>
+                  <button ion-button clear icon-left color="secondary" (click)="modifyTask(tache.id)">
+                    <ion-icon name="md-settings" style="margin-right: 10px;"></ion-icon>
+                    <div>Modifier</div>
+                  </button>
+                </ion-col>
+      
+                <ion-col>
+                  <button ion-button clear icon-left (click)="chooseTask(tache.id,tache.titre,tache.description,tache.date_creation,tache.temps_estime,tache.user)">
+                    <ion-icon name="md-play" style="margin-right: 10px;"></ion-icon>
+                    <div>Commencer</div>
+                  </button>
+                </ion-col>
+      
+      
+      
+              </ion-row>
+            </ion-card>
+      
+      
+      
+      
+          </ion-scroll>
+      
+        </ion-slide>
+        <ion-slide>
+          <ion-scroll scrollY="true" style=" height : 500px">
+            <ion-card *ngFor="let tache of TACHES_ENCOURS | async ;let noteEvaluation = index" >
+              <div *ngIf="tache.id_developer==userId">
+              <ion-card-content > 
+                <ion-card-title>
+                  {{tache.titre}}
+      
+                </ion-card-title>
+      
+                <p>
+                  {{tache.description}}
+                </p>
+      
+                <ion-item>
+                  <b>Créée par </b> {{tache.createur}}
+                  <br>
+                  <b>le </b> {{tache.date_creation | date:'short'}}
+                </ion-item>
+                <ion-item>
+                  <b>Date de debut :</b> {{tache.date_debut | date:'short'}}
+                  <br>
+                  <b>par </b> {{tache.proprietaire}}
+                </ion-item>
+      
+                <ion-item>
+                  <b>Pèriode estimée :</b> {{tache.temps_estime}} <b>Heurs</b>
+                </ion-item>
+                <ion-item>
+                  <b>Date limite :</b> {{tache.date_limite_estime | date:'short'}}
+                </ion-item>
+                
+                <ion-item>
+                  <ion-label floating>Evaluation du rendement</ion-label>
+                  <ion-input type="number" #noteEvaluation></ion-input>
+                
+                </ion-item>
+              </ion-card-content>
+      
+              <ion-row >
+      
+                <ion-col>
+                  <button ion-button clear icon-left color="danger" 
+                  (click)="stopTask(tache.id,tache.titre,tache.description,tache.date_creation,tache.temps_estime,tache.createur)">
+                    <ion-icon name="ios-hand-outline" style="margin-right: 10px;"></ion-icon>
+                    <div>Suspendre</div>
+                  </button>
+                </ion-col>
+      
+                <ion-col>
+                  <button ion-button clear icon-left color="secondary" 
+                  [disabled]="!(noteEvaluation.value &&(noteEvaluation.value>=0 && noteEvaluation.value<=10) )"
+                  (click)="endTask(tache.id,tache.titre,tache.description,tache.date_creation,tache.date_debut,tache.date_debut_info,tache.temps_estime,tache.createur,noteEvaluation.value)">
+                    <ion-icon name="md-checkmark" style="margin-right: 10px;"></ion-icon>
+                    <div>Terminer</div>
+                  </button>
+                </ion-col>
+      
+      
+      
+              </ion-row>
+            </div>
+            </ion-card>
+         
+
+            <ion-card *ngFor="let tache of TACHES_ENCOURS | async " >
+              <div  *ngIf="!(tache.id_developer==userId)">
+              <ion-card-content>
+                <ion-card-title>
+                  {{tache.titre}}
+      
+                </ion-card-title>
+      
+                <p>
+                  {{tache.description}}
+                </p>
+      
+                <ion-item>
+                  <b>Créée par </b> {{tache.createur}}
+                  <br>
+                  <b>le </b> {{tache.date_creation | date:'short'}}
+                </ion-item>
+                <ion-item>
+                  <b>Date de debut :</b> {{tache.date_debut | date:'short'}}
+                  <br>
+                  <b>par </b> {{tache.proprietaire}}
+                </ion-item>
+      
+                <ion-item>
+                  <b>Pèriode estimée :</b> {{tache.temps_estime}} <b>Heurs</b>
+                </ion-item>
+                <ion-item>
+                  <b>Date limite :</b> {{tache.date_limite_estime | date:'short'}}
+                </ion-item>
+                
+      
+              </ion-card-content>
+      
+            
+            </div>
+            </ion-card>
+          
+          </ion-scroll>
+        </ion-slide>
+        <ion-slide>
+          <ion-scroll scrollY="true" style=" height : 500px">
+              <ion-card *ngFor="let tache of TACHES_REALISEE  | async  ">
+                  <ion-card-content>
+                    <ion-card-title>
+                      {{tache.titre}}
+                      
+                    </ion-card-title>
+          
+                    <p>
+                      {{tache.description}}
+                    </p>
+          
+                    <ion-item>
+                      <b>Créée par </b> {{tache.createur}}
+                      <br>
+                      <b>le </b> {{tache.date_creation | date:'short'}}
+                    </ion-item>
+                    <ion-item>
+                      <b>Developpeée par :</b> {{tache.developpeur }}
+                      <br>
+                      <b>Réalisée le </b> {{tache.date_finition | date:'short'}}
+                    </ion-item>
+          
+                    <ion-item>
+                      <b>Pèriode estimée :</b> {{tache.temps_estime}} <b>Heurs</b>
+                    </ion-item>
+                    <ion-item>
+                      <b>Pèriode de developpement :</b> {{tache.periode_dev }} <b>Heurs</b>
+                    </ion-item>
+                    <ion-item>
+                        <b>niveau de difficulté / 10 :</b> {{tache.note }}
+                     <!--   <div *ngFor="let note of test">
+                          <ion-icon name ="md-star"></ion-icon>
+                        </div>
+                      -->
+                    </ion-item>
+          
+          
+                  </ion-card-content>
+           
+                </ion-card>
+          </ion-scroll>
+        </ion-slide>
+      </ion-slides>
+
+
+    
+</ion-content>
+<!--
+   <ion-navbar>
+        <ion-row>
+          
+          <ion-col>
+            <button ion-button menuToggle [class.activeButtonHighlight]="true" >
+              <ion-icon name="menu" style="margin-top : 10px"></ion-icon>
+            </button>
+           
+            
+          </ion-col>
+            
+          <ion-col>
+            <ion-title class="title">Tâches</ion-title>
+          </ion-col>
+
+          <ion-col>
+              <button ion-button clear class="homeButton"  name="home"(click)="gotoAdminPage()" >
+                <ion-icon class="homeIcon" name="home"></ion-icon>
+              </button>
+              <!--
+                 <ion-buttons end>
+            <button ion-button icon-only (click)="exitChat()">
+              <ion-icon name="exit"></ion-icon>
+            </button>
+            <button ion-button clear class="homeButton"  name="home"(click)="gotoAdminPage()" >
+                <ion-icon class="homeIcon" name="home"></ion-icon>
+              </button>
+          </ion-buttons>
+              
+              
+            </ion-col>
+         
+          </ion-row>
+            
+      </ion-navbar>
+    -->

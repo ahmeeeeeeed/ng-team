@@ -1,0 +1,117 @@
+<ion-header>
+    <ion-navbar>
+        <ion-row>
+            <ion-col>
+      <button ion-button menuToggle [class.activeButtonHighlight]="true" >
+        <ion-icon name="menu" style="margin-top : 10px" ></ion-icon>
+      </button>
+      </ion-col>
+      
+       <ion-col>
+      <ion-title class="title">Demandes</ion-title>
+    </ion-col>
+    <ion-col>
+      <ion-buttons right>
+    
+        <button ion-button clear class="homeButton" name="home" (click)="gotoAdminPage()">
+    
+          <ion-icon class="homeIcon" isActive="false" [class.activeButtonHighlight]="!activeButton" name="home"></ion-icon>
+    
+        </button>
+        <button ion-button clear class="homeButton" name="home" (click)="goToChatList()">
+    
+          <ion-icon isActive="true" [class.activeButtonHighlight]="true" name="ios-chatbubbles-outline"></ion-icon>
+    
+        </button>
+      </ion-buttons>
+    </ion-col>
+  </ion-row>
+
+    </ion-navbar>
+  </ion-header>
+<!--
+<ion-header>
+    <ion-navbar>
+       
+            <button ion-button menuToggle [class.activeButtonHighlight]="true" >
+              <ion-icon name="menu" style="margin-top : 10px "></ion-icon>
+            </button>
+         
+            
+        
+            <ion-title class="title">Demandes</ion-title>
+       
+            <ion-buttons right>
+  
+                <button ion-button clear class="homeButton" name="home" (click)="gotoAdminPage()">
+            
+                  <ion-icon class="homeIcon" isActive="false" [class.activeButtonHighlight]="!activeButton" name="home"></ion-icon>
+            
+                </button>
+                <button ion-button clear class="homeButton" name="home" (click)="goToChatList()">
+            
+                  <ion-icon isActive="true" [class.activeButtonHighlight]="true" name="ios-chatbubbles-outline"></ion-icon>
+            
+                </button>
+              </ion-buttons>
+
+    </ion-navbar>
+  </ion-header>
+-->
+<ion-content padding-top padding-bottom class="background-image"> 
+    <ion-item-group no-lines>
+       <!-- <ion-item-divider color="light" style="text-align : center">{{date | date:'short'}}</ion-item-divider> -->
+        <!-- <ion-item *ngFor="let demande of DEMANDES | async ">
+    
+         <ion-card (click)="confirmation(demande.id_tache,demande.type,demande.pseudo_demandeur,demande.modification)">
+            <ion-card-content>
+              <ion-card-title>
+                {{demande.pseudo_demandeur}}
+                <button ion-button icon-only clear item-end color="danger">
+                  <ion-icon name="ios-trash"></ion-icon>
+                </button>
+          
+          
+              </ion-card-title>
+          
+              <ion-item>
+                  Demande {{demande.type}}
+              </ion-item>                
+          
+              <ion-item>
+                <b>La tâche :</b> {{demande.modification}}
+          
+              </ion-item>
+          
+              <ion-item>
+                <b>Envoyée le :</b> {{demande.date_envoie | date:'short'}}
+              </ion-item>
+              <p>
+                  il y a 5 heurs
+              </p>
+          
+            </ion-card-content>
+          
+          </ion-card>
+    
+    
+        </ion-item>
+      -->
+    
+        <ion-list *ngFor="let demande of DEMANDES | async " class="list">
+            <ion-item *ngIf="demande.etat=='non lu' " (click)="confirmation(demande.id,demande.id_tache,demande.nom_tache,demande.type,demande.pseudo_demandeur,demande.modification,demande.id_demandeur)">
+              <ion-thumbnail item-start >
+                <img src= "http://www.stpaulusbc.org/content/images/no-profile.png">
+              </ion-thumbnail>
+              <h1>{{demande.pseudo_demandeur}}</h1>
+               <b>Demande {{demande.type}}</b><br>
+               <b>La tâche :</b> {{demande.nom_tache}}<br>
+               <b>Envoyée le :</b> {{demande.date_envoie | date:'short'}}<br>
+              <p>il y a 5 heurs</p>
+              
+              
+            </ion-item>
+          </ion-list>
+      </ion-item-group>
+
+</ion-content>

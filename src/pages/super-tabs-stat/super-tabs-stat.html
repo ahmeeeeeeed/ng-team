@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar style ="display : relative">
+      <ion-row>
+        
+        <ion-col>
+          <button ion-button menuToggle [class.activeButtonHighlight]="true" >
+            <ion-icon name="menu" style="margin-top : 10px"></ion-icon>
+          </button>
+        </ion-col>
+          
+        <ion-col>
+          <ion-title class="title">Statistiques</ion-title>
+        </ion-col>
+
+        <ion-col>
+            <ion-buttons right>
+
+                <button ion-button clear class="homeButton"  name="home"(click)="gotoAdminPage()">
+                
+                      <ion-icon class="homeIcon" isActive="false"  [class.activeButtonHighlight]="!activeButton" name="home"></ion-icon>
+                  
+                  </button>
+                  <button ion-button clear class="homeButton"  name="home" (click)="goToChatList()">
+                
+                      <ion-icon  isActive="false"  [class.activeButtonHighlight]="!activeButton" name="ios-chatbubbles-outline"></ion-icon>
+                
+                  </button>
+              </ion-buttons>
+        </ion-col>
+
+      </ion-row>
+     
+  </ion-navbar>
+</ion-header>
+<ion-content>
+    <super-tabs (tabSelect)="onTabSelected($event)" selectedIndex="0" tabsPlacement="top" badgeColor="danger"  indicatorColor="primary" toolbarColor="primary" >
+        <super-tab [root]="tab1Root"   title="progression" id="badgeAdmin"></super-tab>
+        <super-tab [root]="tab2Root"   title="Par semaine"  id="badgeUser"></super-tab>
+        <super-tab [root]="tab3Root"   title="par user"  id="badgeUser"></super-tab>
+      </super-tabs>
+
+</ion-content>
+ 

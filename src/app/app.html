@@ -1,0 +1,80 @@
+<!--<div *ngIf="showSplash" class="splash">
+  <div class="spinnerr"></div>
+</div>
+-->
+<!--<div class="spinner">
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+    <div class="rect4"></div>
+    <div class="rect5"></div>
+  </div>
+-->
+
+<ion-menu [content]="content" >
+    <ion-header  >
+
+        <ion-title class="menuTitle" >
+          <h4><b style="color : white">{{interface_name}}</b></h4>
+        </ion-title>
+<!--
+      <ion-toolbar color="navbarcolor" >
+        <ion-row>
+          <ion-col>
+        <ion-title class="menuTitle" ><h4><b>{{interface_name}}</b></h4></ion-title>
+      </ion-col>
+    <!--  <ion-col>
+        <button clear ion-button menuClose>
+
+            <ion-icon class="iconItiem" name="md-arrow-round-back"></ion-icon>
+
+        </button>
+        </ion-col>-->
+     <!-- </ion-row>
+      </ion-toolbar>
+    -->
+    </ion-header>
+  
+    <ion-content class="backgroundContent">
+        
+      <ion-list padding >
+          <ion-avatar item-start class="roundImage">
+          <!--<img src="../assets/imgs/anonyme.png"/>-->
+          <img [src]="photo"/>
+
+          <h4><b styele="text-align:center; ">{{pseudoPersonne}}</b></h4>
+        </ion-avatar>
+      
+       
+        
+     <div *ngIf="buttonColor">
+        <button  class="buttonColor" [class.activePageHighlight]="checkActive(p)" menuClose ion-item round 
+          *ngFor="let p of pages" (click)="openPage(p)">
+
+          <ion-icon class="iconItiem" name={{p.icon}}></ion-icon>
+         
+           {{p.title}}
+           
+                   
+        </button>
+      </div>
+      
+      <div *ngIf="!buttonColor">
+        <button  class="buttonColor"  menuClose ion-item round 
+          *ngFor="let p of pages" (click)="openPage(p)">
+
+          <ion-icon class="iconItiem" name={{p.icon}}></ion-icon>
+         
+           {{p.title}}
+           
+                   
+        </button>
+      </div>
+          
+      </ion-list>
+    </ion-content>
+  
+  </ion-menu>
+  
+  <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+  <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

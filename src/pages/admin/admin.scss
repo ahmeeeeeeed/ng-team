@@ -1,0 +1,30 @@
+
+.homeButton{
+    float: right;
+    margin-right: 10px;
+ //   margin-top : 0px;
+    font-size: 20px;
+    margin-left : 0px;
+    //size: 110px 
+    /*.homeIcon{
+        color : #121212;
+    }*/
+}
+.title{
+    margin-top: 9px;
+}
+.activeButtonHighlight {
+    color: #2ac1db;
+}
+page-admin{
+    ion-card.card{
+        border-radius: 15px;
+        opacity: 0.7;
+       // background: linear-gradient(360deg, #4e5efc,#4EE7FC);
+       
+    }
+    
+       .item{
+           background: $SIDE_MENU_TRANSPARENCY;
+       }
+}

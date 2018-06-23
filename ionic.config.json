@@ -1,0 +1,8 @@
+{
+  "name": "ng-team",
+  "app_id": "aba01bf3",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

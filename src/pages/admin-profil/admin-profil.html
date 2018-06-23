@@ -1,0 +1,136 @@
+<!--
+  Generated template for the AdminProfilPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar style ="display : relative">
+        <ion-row>
+          
+          <ion-col>
+            <button ion-button menuToggle [class.activeButtonHighlight]="true" >
+              <ion-icon name="menu" style="margin-top : 10px"></ion-icon>
+            </button>
+          </ion-col>
+            
+          <ion-col>
+            <ion-title class="title">Profil</ion-title>
+          </ion-col>
+
+          <ion-col>
+              <ion-buttons right>
+
+                  <button ion-button clear class="homeButton"  name="home"(click)="gotoAdminPage()">
+                  
+                        <ion-icon class="homeIcon" isActive="false"  [class.activeButtonHighlight]="!activeButton" name="home"></ion-icon>
+                    
+                    </button>
+                    <button ion-button clear class="homeButton"  name="home" (click)="goToChatList()">
+                  
+                        <ion-icon  isActive="false"  [class.activeButtonHighlight]="!activeButton" name="ios-chatbubbles-outline"></ion-icon>
+                  
+                    </button>
+                </ion-buttons>
+          </ion-col>
+
+        </ion-row>
+          
+    </ion-navbar>
+  </ion-header>
+  
+<ion-content padding class="background-image">
+  <ion-avatar item-start class="roundImage">
+    <!-- <img src="http://www.stpaulusbc.org/content/images/no-profile.png" />-->
+    <img [src]="photo" />
+
+    <!-- <img src="../assets/imgs/anonyme.png" />-->
+
+   </ion-avatar>
+   <button ion-button block round clear (click)="addPicture()">
+     <h6>Ajouter une photo de profil</h6>
+   </button>
+  <ion-card>
+    <ion-card-header>
+    
+    </ion-card-header>
+    <ion-card-content>
+        <ion-item>
+          <ion-label >Email :</ion-label>
+          <ion-input type="email" [disabled]="true" [(ngModel)]="change_email"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label >Pseudo :</ion-label>
+          <ion-input type="text" [(ngModel)]="change_pseudo"></ion-input>
+        </ion-item>
+        <br>
+      
+        
+        <ion-item>
+          <ion-label >Poste :</ion-label>
+          <ion-input type="text" [(ngModel)]="change_poste"></ion-input>
+        </ion-item>
+        <br> 
+        
+        
+
+      <div *ngIf="updatePassword"> 
+        
+        <ion-item>
+          <ion-label floating>Mot de passe actuelle:</ion-label>
+          <ion-input type="password" min=6 [(ngModel)]="current_password"></ion-input>
+        </ion-item>
+        <br>
+        
+        <ion-item>
+          <ion-label floating>nouvelle mot de passe :</ion-label>
+          <ion-input type="password" min=6 [(ngModel)]="new_password"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-label floating>Confirmer nouvelle mot de passe :</ion-label>
+          <ion-input type="password" min=6 [(ngModel)]="confirm_password"></ion-input>
+        </ion-item>
+        <br>
+
+     </div>
+
+        <ion-item>
+          <ion-label>changer mot de passe</ion-label>
+          <ion-checkbox  [(ngModel)]="passwordCheckBox" (ionChange)="changePassword()"></ion-checkbox>
+        </ion-item>
+        
+      
+      <ion-row>
+      <div *ngIf="updatePassword"> 
+        <ion-col>
+          <button ion-button icon-left block 
+          (click)="updateProfile(change_pseudo,change_poste,current_password,new_password)"
+          [disabled]="!(change_pseudo && change_poste && current_password && new_password &&confirm_password
+                        && current_password!= new_password
+                        && confirm_password==new_password)">
+        <ion-icon name="md-create"></ion-icon>
+        <div>Appliquer les changements</div>
+      </button>
+        </ion-col>
+      </div>
+
+      <div *ngIf="!updatePassword"> 
+        <ion-col>
+            <button ion-button icon-left block 
+            (click)="updateProfileByPseudAndPost(change_pseudo,change_poste)"
+            [disabled]="!(change_pseudo && change_poste )">
+          <ion-icon name="md-create"></ion-icon>
+          <div>Appliquer les changements</div>
+        </button>
+          </ion-col>
+      </div>
+          <br>
+       
+      </ion-row>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
